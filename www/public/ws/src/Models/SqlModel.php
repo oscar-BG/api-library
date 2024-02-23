@@ -4,7 +4,7 @@ use PDO;
 
 class SqlModel{
     
-    protected static $host      = "contenedor-slim-db-1";
+    protected static $host      = "api-library-db-1";
     protected static $dbname    = "library";
     protected static $user      = "root";
     protected static $password  = "libr4ryroot";
@@ -28,10 +28,15 @@ class SqlModel{
         $rows = [];
         while ($row = $stm->fetch(PDO::FETCH_ASSOC)) {
             $rows["books"][] = array(
-                "id"        => $row['id'],
-                "titulo"    => $row["title"],
-                "publicado" => $row["publication_year"],
-                "isbn"      => $row["isbn"]
+                "id"            => $row['id'],
+                "titulo"        => $row["title"],
+                "imgen"         => $row["cover"],
+                "descripcion"   => $row["description"],
+                "editorial"     => $row["publisher"],
+                "publicado"     => $row["publication_year"],
+                "isbn"          => $row["isbn"],
+                "autores"       => json_decode($row["autores"], true),
+                "categoria"     => json_decode($row["categoria"], true)
             );
         }
         return $rows;

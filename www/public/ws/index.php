@@ -16,7 +16,7 @@ $app->setBasePath("/ws");
 $app->addBodyParsingMiddleware();
 
 // Add Error Handling Middleware
-// $app->addErrorMiddleware(true, false, false);
+// $app->addErrorMiddleware(true, true, true);
 
 $app->get('/libros', BookController::class . ':get_book' );
 $app->post('/crear-autor', AuthorController::class . ':create_author');

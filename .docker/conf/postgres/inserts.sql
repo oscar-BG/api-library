@@ -58,8 +58,8 @@ INSERT INTO public.book_author (id_book,id_author) VALUES
 	 (10,10);
 INSERT INTO public.book_author (id_book,id_author) VALUES
 	 (11,11),
-	 (12,12),
-	 (13,12);
+	 (12,11),
+	 (13,11);
 
 INSERT INTO public.book_category (id_book,id_category) VALUES
 	 (1,1),
@@ -76,4 +76,4 @@ INSERT INTO public.book_category (id_book,id_category) VALUES
 	 (11,10),
 	 (12,11),
 	 (13,12),
-	 (13,13);
+	 (13,12);

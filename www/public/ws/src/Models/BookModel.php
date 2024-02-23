@@ -7,7 +7,15 @@ class BookModel extends SqlModel{
 
     public static function fetch($page, $registros) {
         $offset = ($page - 1) * $registros;
-        $query_book = "SELECT * FROM book b ORDER BY b.id ASC LIMIT :registros OFFSET :offset;";
+        $query_book = "SELECT b.id, b.title, b.description, b.cover, b.publication_year, b.publisher, b.isbn, jsonb_agg(a.name) AS autores, jsonb_agg(c.name) AS categoria  FROM book b
+            INNER JOIN book_author ba ON ba.id_book = b.id
+            INNER JOIN author a ON a.id = ba.id_author
+	        INNER JOIN book_category bc ON bc.id_book = b.id 
+	        INNER JOIN category c ON bc.id_category = c.id 
+        GROUP BY b.id 
+        ORDER BY b.id ASC 
+        LIMIT :registros OFFSET :offset;";
+
         $params_select = [":registros" => $registros, ":offset" => $offset];
         $result = self::executeFetchBooks($query_book, $params_select);
 
