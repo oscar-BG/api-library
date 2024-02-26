@@ -4,7 +4,7 @@ use PDO;
 
 class SqlModel{
     
-    protected static $host      = "api-library-db-1";
+    protected static $host      = "contenedor-slim-db-1";
     protected static $dbname    = "library";
     protected static $user      = "root";
     protected static $password  = "libr4ryroot";
